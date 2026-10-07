@@ -8,6 +8,17 @@
 / {
     chosen {
         zmk,physical-layout = &default_layout;
+        zmk,battery = &non_lipo_battery;   /* 追加 */
+    };
+
+/* 標準LiPo定義を無効化 */
+    vbatt: vbatt {
+        status = "disabled";
+    };
+
+    non_lipo_battery: non_lipo_battery {
+        compatible = "zmk,non-lipo-battery";
+        io-channels = <&adc 7>;   /* XIAO / cool640db は ch7 */
     };
 
 //trackball settings  
